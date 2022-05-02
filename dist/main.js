@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // Variables //
 var a = "1";
 console.log("aaa", a);
@@ -57,3 +72,36 @@ someElement.addEventListener('blur', function (event) {
     var target = event.target;
     console.log('event', target.value);
 });
+var People = /** @class */ (function () {
+    function People(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.unchangableName = firstName;
+    }
+    People.prototype.changeUnchangableName = function () {
+        // this.unchangableName = 'foo';
+    };
+    People.prototype.getFullName = function () {
+        return this.firstName + ' ' + this.lastName;
+    };
+    People.maxAge = 50;
+    return People;
+}());
+var Admin = /** @class */ (function (_super) {
+    __extends(Admin, _super);
+    function Admin() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Admin.prototype.setEditor = function (editor) {
+        this.editor = editor;
+    };
+    Admin.prototype.getEditor = function () {
+        return this.editor;
+    };
+    return Admin;
+}(People));
+var person = new People('Skip', 'Pharaoh');
+console.log(person.firstName);
+console.log(People.maxAge);
+var admin = new Admin('Foo', 'Bar');
+console.log(admin.getEditor);
