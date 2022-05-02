@@ -90,3 +90,14 @@ console.log(vAny.foo());
 let s2: string = vUnknown as string
 let pageNumber : string = '1';
 let numericPageNumber: number = (pageNumber as unknown) as number;
+
+// Working with DOM //
+const someElement = document.querySelector('.foo') // as HTMLInputElement
+
+// console.log('someElement', someElement.value)
+
+someElement.addEventListener('blur', (event) => {
+    const target = event.target as HTMLInputElement
+    console.log('event', target.value)
+})
+
